@@ -1,0 +1,47 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+Main
+{% endblock %}
+
+{% block content %}
+
+<h1>Усі експонати музею</h1>
+<table class="table">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Назва</th>
+        <th scope="col">Автор</th>
+        <th scope="col">Опис</th>
+        <th scope="col">Кількість</th>
+    </tr>
+    </thead>
+<tbody>
+  {% if books %}
+  {% for el in books %}
+  <tr>
+      <th scope="row">{{el.id}}</th>
+      <td >{{el.title}}}</td>
+      <td >{{el.author}}}</td>
+      <td >{{el.text|truncatewords:6 }}}</td>
+      <td >{{el.count}}}</td>
+      <td><a type="button" class="btn btn-info btn-sm" href="/book/{{el.id}}/view">
+          <img src="https://cdn-icons-png.flaticon.com/512/983/983909.png" width="24" height="29">
+      </a>
+      <td><a type="button" class="btn btn-warning btn-sm" href="/book/{{el.id}}/edit">
+      <img src="https://cdn-icons-png.flaticon.com/512/32/32355.png" width="24" height="29">
+  </a>
+      <td><a type="button" class="btn btn-danger btn-sm" href="/book/{{el.id}}/delete">
+      <img src="https://cdn-icons-png.flaticon.com/512/1345/1345874.png" width="24" height="29">
+  </a>
+      </td>
+  </tr>
+  {% endfor %}
+  {% else %}
+  <p>Наразі обрані експонати в каталозі</p>
+{% endif %}
+</tbody>
+</table>
+
+{% endblock %}

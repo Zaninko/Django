@@ -1,0 +1,27 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+Редагувати запис
+{% endblock %}
+
+{% block content %}
+
+<h1>Редагувати запис.</h1>
+
+<form action="" method="post" autocomplete="off">
+ {% csrf_token %}
+    <label for="title"><b>Назва експонату</b></label>
+    {{ form.title }}
+    <label for="author"><b>Автор</b></label>
+    {{ form.author }}
+    <label for="text"><b>Короткий опис</b></label>
+    {{ form.text }}
+    <label for="published"><b>Рік видання</b></label>
+    {{ form.published }}
+    <label for="count"><b>Кількість</b></label>
+    {{ form.count }}
+    <button type="submit" class="btn btn-success">Внести зміни</button>
+
+</form>
+
+{% endblock %}
